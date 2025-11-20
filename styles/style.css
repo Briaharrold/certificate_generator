@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.input-section p {
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    height: 400px;
+    padding: 15px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.button-primary:hover {
+    background: #1d4ed8;
+}
+
+.button-success {
+    background: #16a34a;
+    color: white;
+}
+
+.button-success:hover {
+    background: #15803d;
+}
+
+.button-purple {
+    background: #9333ea;
+    color: white;
+}
+
+.button-purple:hover {
+    background: #7e22ce;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-buttons button {
+    padding: 10px 20px;
+    background: #e5e7eb;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-buttons button:hover:not(:disabled) {
+    background: #d1d5db;
+}
+
+.nav-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.preview-container {
+    overflow: auto;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    margin-bottom: 20px;
+    max-height: 500px;
+}
+
+.preview-wrapper {
+    transform: scale(0.45);
+    transform-origin: top left;
+    width: 1217px;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.alert-success {
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.alert-info {
+    background: #dbeafe;
+    border: 1px solid #93c5fd;
+    color: #1e40af;
+    margin-top: 15px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #9ca3af;
+}
+
+.empty-state svg {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    opacity: 0.3;
+}
+
+/* Certificate styles */
+.certificate {
+    width: 1217px;
+    height: 936px;
+    position: relative;
+    background-image: url('../images/certificate-template.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.certificate-name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -60px; /* Adjust this to position the name correctly */
+    text-align: center;
+    width: 100%;
+    font-size: 96px;
+    font-weight:  900;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+    letter-spacing: 4px;
+}
+
+.name-orange {
+    color: #f97316;
+}
+
+.name-blue {
+    color: #2563eb;
+}
+
+/* Print styles */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+    .container, .header, .grid, .card {
+        display: none !important;
+    }
+    #printArea {
+        display: block !important;
+    }
+    .print-certificate {
+        page-break-after: always;
+        margin: 0;
+        padding: 0;
+    }
+    .print-certificate:last-child {
+        page-break-after: auto;
+    }
+}
+
+#printArea {
+    display: none;
+}
