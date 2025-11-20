@@ -207,7 +207,7 @@ textarea:focus {
     opacity: 0.3;
 }
 
-/* Certificate styles */
+
 .certificate {
     width: 1217px;
     height: 936px;
@@ -222,7 +222,7 @@ textarea:focus {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: -60px; /* Adjust this to position the name correctly */
+    margin-top: -60px; 
     text-align: center;
     width: 100%;
     font-size: 96px;
