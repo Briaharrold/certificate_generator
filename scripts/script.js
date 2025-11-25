@@ -1,10 +1,11 @@
 let certificates = [];
 let currentIndex = 0;
-
+let selectedTemplate = 'template1';
 function generateCertificates() {
     const input = document.getElementById('nameInput').value;
     const lines = input.trim().split('\n');
-
+    selectedTemplate = document.getElementById('templateSelect').value;
+    console.log('Selected template:', selectedTemplate);  // For testing
     certificates = lines
 
         .map(line => {
@@ -56,7 +57,7 @@ function updatePreview() {
         
         <div class="preview-container">
             <div class="preview-wrapper">
-                ${createCertificateHTML(cert.firstName, cert.lastName)}
+                ${createCertificateHTML(cert.firstName, cert.lastName, selectedTemplate)}
             </div>
         </div>
 
@@ -75,7 +76,7 @@ function updatePreview() {
     `;
 }
 
-function createCertificateHTML(firstName, lastName) {
+function createCertificateHTML(firstName, lastName, selectedTemplate) {
     const fullName = firstName + '  ' + lastName;
     console.log('Full name:', fullName, 'Length:', fullName.length);
 
@@ -90,12 +91,12 @@ function createCertificateHTML(firstName, lastName) {
         fullNameFontSize = ' 87px';
     }
     return `
-        <div class="certificate">
-            <div class="certificate-name-overlay" style="font-size: ${fullNameFontSize}">
-                <span class="name-orange">${firstName}</span>${lastName ? '<span class="name-blue"> ' + lastName + '</span>' : ''}
-            </div>
+    <div class="certificate" style="background-image: url('../images/${selectedTemplate === 'template1' ? 'certificate-template.png' : 'certificate-template2.png'}'); background-size: cover; background-position: center;">
+        <div class="certificate-name-overlay" style="font-size: ${fullNameFontSize}">
+            <span class="name-orange">${firstName}</span>${lastName ? '<span class="name-blue"> ' + lastName + '</span>' : ''}
         </div>
-    `;
+    </div>
+`;
 }
 
 function prevCertificate() {
@@ -114,7 +115,7 @@ function nextCertificate() {
 
 function printCurrent() {
     const printArea = document.getElementById('printArea');
-    printArea.innerHTML = `<div class="print-certificate">${createCertificateHTML(certificates[currentIndex].firstName, certificates[currentIndex].lastName)}</div>`;
+    printArea.innerHTML = `<div class="print-certificate">${createCertificateHTML(certificates[currentIndex].firstName, certificates[currentIndex].lastName,selectedTemplate)}</div>`;
     printArea.style.display = 'block';
     window.print();
     printArea.style.display = 'none';
@@ -123,7 +124,7 @@ function printCurrent() {
 function printAll() {
     const printArea = document.getElementById('printArea');
     printArea.innerHTML = certificates.map(cert =>
-        `<div class="print-certificate">${createCertificateHTML(cert.firstName, cert.lastName)}</div>`
+        `<div class="print-certificate">${createCertificateHTML(cert.firstName, cert.lastName, selectedTemplate)}</div>`
     ).join('');
     printArea.style.display = 'block';
     window.print();
