@@ -219,7 +219,7 @@ textarea:focus {
 
 .certificate-name-overlay {
     position: absolute;
-    top: 50%;
+    top: 51%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin-top: -60px; 
@@ -231,7 +231,10 @@ textarea:focus {
     line-height: 1.1;
     letter-spacing: 4px;
 }
-
+.logo {
+    width: 200px;
+ 
+}
 .name-orange {
     color: #f97316;
 }

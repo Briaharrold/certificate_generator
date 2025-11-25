@@ -70,9 +70,17 @@ function updatePreview() {
 }
 
 function createCertificateHTML(firstName, lastName) {
+    const fullName = firstName + '  ' + lastName;
+    let  fullNameFontSize = '64px';
+     if (fullName.length >= 19) {
+   fullNameFontSize = '78px';
+    } else {
+      fullNameFontSize = ' 87px';
+    }
+
     return `
         <div class="certificate">
-            <div class="certificate-name-overlay">
+            <div class="certificate-name-overlay" style="font-size: ${fullNameFontSize}">
                 <span class="name-orange">${firstName}</span>${lastName ? '<span class="name-blue"> ' + lastName + '</span>' : ''}
             </div>
         </div>
