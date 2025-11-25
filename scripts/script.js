@@ -85,7 +85,7 @@ function createCertificateHTML(firstName, lastName, selectedTemplate) {
         alert('Name is too long! Please shorten the name to 23 characters or less please ;)');
         return '';
     }
-    else if (fullName.length >= 16 && fullName.length < 24) {
+    else if (fullName.length >= 17 && fullName.length < 24) {
         fullNameFontSize = ' 65px';
     } else {
         fullNameFontSize = ' 87px';
