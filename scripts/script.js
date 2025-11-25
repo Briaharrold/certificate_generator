@@ -4,9 +4,14 @@ let currentIndex = 0;
 function generateCertificates() {
     const input = document.getElementById('nameInput').value;
     const lines = input.trim().split('\n');
-    
+
     certificates = lines
+
         .map(line => {
+            if (/\d/.test(line)) {
+                alert('Names should not contain numbers. Please correct the input.');
+                return null;
+            }
             const parts = line.trim().split(/\s+/);
             if (parts.length >= 2) {
                 const firstName = parts.slice(0, -1).join(' ').toUpperCase();
@@ -24,7 +29,8 @@ function generateCertificates() {
         updatePreview();
         document.getElementById('successMessage').style.display = 'block';
         document.getElementById('successMessage').innerHTML = `<strong>✓ ${certificates.length} certificate(s) ready!</strong> Use the preview to check them.`;
-    } else {
+    }
+    else {
         alert('Please enter at least one valid name.');
     }
 }
@@ -32,7 +38,7 @@ function generateCertificates() {
 function updatePreview() {
     const previewSection = document.getElementById('previewSection');
     const cert = certificates[currentIndex];
-    
+
     previewSection.innerHTML = `
         <div class="navigation">
             <div style="font-weight: bold; color: #6b7280;">
@@ -71,13 +77,18 @@ function updatePreview() {
 
 function createCertificateHTML(firstName, lastName) {
     const fullName = firstName + '  ' + lastName;
-    let  fullNameFontSize = '64px';
-     if (fullName.length >= 19) {
-   fullNameFontSize = '78px';
-    } else {
-      fullNameFontSize = ' 87px';
-    }
+    console.log('Full name:', fullName, 'Length:', fullName.length);
 
+    let fullNameFontSize = '64px';
+    if (fullName.length >= 24) {
+        alert('Name is too long! Please shorten the name to 23 characters or less please ;)');
+        return '';
+    }
+    else if (fullName.length >= 16 && fullName.length < 24) {
+        fullNameFontSize = ' 65px';
+    } else {
+        fullNameFontSize = ' 87px';
+    }
     return `
         <div class="certificate">
             <div class="certificate-name-overlay" style="font-size: ${fullNameFontSize}">
@@ -111,7 +122,7 @@ function printCurrent() {
 
 function printAll() {
     const printArea = document.getElementById('printArea');
-    printArea.innerHTML = certificates.map(cert => 
+    printArea.innerHTML = certificates.map(cert =>
         `<div class="print-certificate">${createCertificateHTML(cert.firstName, cert.lastName)}</div>`
     ).join('');
     printArea.style.display = 'block';

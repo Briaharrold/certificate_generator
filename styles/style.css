@@ -161,12 +161,13 @@ textarea:focus {
     background: #f9fafb;
     margin-bottom: 20px;
     max-height: 500px;
+    padding: 20px;
 }
 
 .preview-wrapper {
     transform: scale(0.45);
     transform-origin: top left;
-    width: 1217px;
+    width: 500px;
 }
 
 .button-group {
