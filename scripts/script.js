@@ -115,7 +115,7 @@ function nextCertificate() {
 
 function printCurrent() {
     const printArea = document.getElementById('printArea');
-    printArea.innerHTML = `<div class="print-certificate">${createCertificateHTML(certificates[currentIndex].firstName, certificates[currentIndex].lastName,selectedTemplate)}</div>`;
+    printArea.innerHTML = `<div class="print-certificate">${createCertificateHTML(certificates[currentIndex].firstName, certificates[currentIndex].lastName, selectedTemplate)}</div>`;
     printArea.style.display = 'block';
     window.print();
     printArea.style.display = 'none';
