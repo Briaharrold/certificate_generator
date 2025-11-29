@@ -17,14 +17,18 @@
         <h1>Borderless Academics Certificate Generator</h1>
         <p>Generate certificates for your STEM students</p>
       </div>
-
       <div class="grid">
         <div class="card input-section">
           <h2>📝 Enter Names</h2>
           <p>Enter one name per line. Format: FirstName LastName</p>
-          <div class="input-group" style="margin-bottom: 1rem;">
+          <div class="input-group" style="margin-bottom: 1rem">
             <label for="templateSelect">Select Certificate Template:</label>
-            <select id="templateSelect" class="text-input" style="padding: 10px;" type="text">
+            <select
+              id="templateSelect"
+              class="text-input"
+              style="padding: 10px"
+              type="text"
+            >
               <option value="template1">Template 1 - Default</option>
               <option value="template2">Template 2 - Alternative</option>
             </select>
@@ -69,7 +73,6 @@
       </div>
     </div>
 
-    <!-- Hidden print area -->
     <div id="printArea">></div>
 
     <script src="./scripts/script.js"></script>
