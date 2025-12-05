@@ -1,6 +1,8 @@
 let certificates = [];
 let currentIndex = 0;
 let selectedTemplate = 'template1';
+const img = document.querySelector("img");
+img.loading = "lazy";
 function generateCertificates() {
     const input = document.getElementById('nameInput').value;
     const lines = input.trim().split('\n');
