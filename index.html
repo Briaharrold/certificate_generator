@@ -6,8 +6,8 @@
     <title>Borderless Academics Certificate Generator</title>
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <body class="bg">
-    <div class="container">
+  <body>
+    <div>
       <div class="header">
         <img
           src="../images/borderless_academics_logo.png"
@@ -33,6 +33,27 @@
               <option value="template1">Template 1 - Default</option>
               <option value="template2">Template 2 - Alternative</option>
             </select>
+          </div>
+          <div class="input-group" style="margin-bottom: 1rem">
+            <label for="certificateText">Certificate Text:</label>
+            <textarea
+              type="text"
+              id="certificateText"
+              class="text-input"
+              placeholder="In recognition of their outstanding dedication to STEM investigations and exploration during the 8 week enrichment program powered by the GoSTEAM Mobile Science Lab awarded"
+              value=""
+              style="padding-bottom: 20px; height: 70px"
+            ></textarea>
+          </div>
+
+          <div class="input-group" style="margin-bottom: 1rem">
+            <label for="certificateDate">Certificate Date:</label>
+            <input
+              type="date"
+              id="certificateDate"
+              class="text-input"
+              style="padding: 10px"
+            />
           </div>
           <textarea
             id="nameInput"
