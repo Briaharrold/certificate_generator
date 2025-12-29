@@ -182,7 +182,7 @@ else {
     fullNameFontSize = '87px';
 } 
     return `
-    <div class="certificate" style="background-image: url('../images/${selectedTemplate === 'template1' ? 'certificate-template.png' : 'certificate-template2.png'}'); background-size: cover; background-position: center;">
+    <div class="certificate" style="background-image: url('./images/${selectedTemplate === 'template1' ? 'certificate-template.png' : 'certificate-template2.png'}'); background-size: cover; background-position: center;">
         <div class="certificate-text-overlay">
             ${certificateText}
         </div>

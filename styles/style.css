@@ -6,7 +6,8 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    background: #9dcbff;
+    /*#=background-image: linear-gradient(to bottom, #fbfbfb, #186bc9); */
     padding: 20px;
     min-height: 100vh;
 }
@@ -22,7 +23,11 @@ body {
     text-align: center;
 }
 
-
+.f{
+     font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+      
+}
 .certificate-date-overlay {
     position: absolute;
     bottom: 36%;  
@@ -130,7 +135,7 @@ textarea:focus {
 }
 
 .button-success:hover {
-    background: #15803d;
+    background: rgb(157, 203, 255);
 }
 
 .button-purple {
@@ -307,7 +312,7 @@ textarea:focus {
         height: 100%;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-        color-adjust: exact;
+        
     }
     
     .certificate-name-overlay,
