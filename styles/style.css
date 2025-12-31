@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: #9dcbff;
-    /*#=background-image: linear-gradient(to bottom, #fbfbfb, #186bc9); */
     padding: 20px;
     min-height: 100vh;
 }
@@ -15,31 +17,33 @@ body {
 .certificate-text-overlay {
     font-family: "Roboto", sans-serif;
     position: absolute;
-    top: 52%;  
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
     color: #111b9d;
     text-align: center;
+    width: 60%;
+    padding: 0 20px;
 }
 
-.f{
-     font-family: 'Poppins', sans-serif;
-        font-weight: 800;
-      
+.f {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
+
 .certificate-date-overlay {
     position: absolute;
-    bottom: 36%;  
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
     color: #111b9d;
     font-family: "Roboto", sans-serif;
 }
-.bg{
-      background: linear-gradient(135deg, #ffffff 0%, #004094 100%);
+
+.bg {
+    background: linear-gradient(135deg, #ffffff 0%, #004094 100%);
 }
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -92,6 +96,30 @@ body {
     margin-bottom: 15px;
 }
 
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.text-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
 textarea {
     width: 100%;
     height: 400px;
@@ -135,7 +163,7 @@ textarea:focus {
 }
 
 .button-success:hover {
-    background: rgb(157, 203, 255);
+    background: #15803d;
 }
 
 .button-purple {
@@ -186,16 +214,17 @@ textarea:focus {
     overflow: auto;
     border: 2px solid #e5e7eb;
     border-radius: 8px;
-    background: #f9fafb;
+    background: #000000;
     margin-bottom: 20px;
     max-height: 500px;
     padding: 20px;
 }
 
 .preview-wrapper {
-    transform: scale(0.45);
+    transform: scale(0.50);
     transform-origin: top left;
     width: 500px;
+    
 }
 
 .button-group {
@@ -236,34 +265,30 @@ textarea:focus {
     opacity: 0.3;
 }
 
-
 .certificate {
     width: 1217px;
     height: 936px;
     position: relative;
-    background-image: url('../images/certificate-template.png');
     background-size: cover;
     background-position: center;
 }
 
 .certificate-name-overlay {
     position: absolute;
-    top: 51%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: -50px; 
     text-align: center;
     width: 100%;
-    font-size: 96px;
-    font-weight:  900;
+    font-weight: 900;
     font-family: 'Poppins', sans-serif;
     line-height: 1.1;
     letter-spacing: 4px;
 }
+
 .logo {
     width: 200px;
- 
 }
+
 .name-orange {
     color: #f97316;
 }
@@ -272,6 +297,7 @@ textarea:focus {
     color: #0c0e93;
 }
 
+/* Print styles */
 @media print {
     @page {
         size: landscape;
@@ -308,20 +334,35 @@ textarea:focus {
     }
     
     .certificate {
-        width: 100%;
-        height: 100%;
+        width: 95vw;
+        height: 95vh;
+        position: relative;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-        
+        color-adjust: exact;
     }
     
     .certificate-name-overlay,
     .certificate-text-overlay,
     .certificate-date-overlay {
+        position: absolute !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
+    
+    .certificate-text-overlay {
+        transform: translateX(-50%) !important;
+    }
+    
+    .certificate-name-overlay {
+        transform: translate(-50%, -50%) !important;
+    }
+    
+    .certificate-date-overlay {
+        transform: translateX(-50%) !important;
+    }
 }
+
 #printArea {
     display: none;
 }

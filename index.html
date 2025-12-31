@@ -14,28 +14,165 @@
           alt="Borderless Academics Logo"
           class="logo"
           loading="lazy"
-         
         />
-        <h1 class="" style="color: rgb(10, 10, 10);">Borderless Academics Certificate Generator</h1>
+        <h1 style="color: rgb(10, 10, 10)">
+          Borderless Academics Certificate Generator
+        </h1>
         <p>Generate certificates for your STEM students</p>
       </div>
       <div class="grid">
-        <div class="card input-section "style="background: #cce1fb;">
+        <div class="card input-section" style="background: #cce1fb">
           <h2 class="f">📝 Enter Names</h2>
           <p>Enter one name per line. Format: FirstName LastName</p>
+
           <div class="input-group" style="margin-bottom: 1rem">
             <label for="templateSelect">Select Certificate Template:</label>
             <select
               id="templateSelect"
               class="text-input"
               style="padding: 10px"
-              type="text"
+              onchange="toggleCustomUpload()"
             >
               <option value="template1">Template 1 - Default</option>
               <option value="template2">Template 2 - Alternative</option>
+              <option value="custom">Custom - Upload Your Own</option>
             </select>
           </div>
-          <div class="input-group" style="margin-bottom: 1rem">
+
+          <div class="input-group" id="customUploadSection" style="margin-bottom: 1rem; display: none;">
+            <label for="customTemplate">Upload Custom Certificate Template:</label>
+            <input
+              type="file"
+              id="customTemplate"
+              accept="image/png,image/jpeg,image/jpg"
+              class="text-input"
+              style="padding: 10px"
+              onchange="handleCustomUpload(event)"
+            />
+            <small style="color: #6b7280;">Accepted formats: PNG, JPG. Recommended size: 1920x1440px or larger</small>
+          </div>
+
+          <div class="input-group" style="margin-bottom: 1rem; padding: 15px; background: #f3f4f6; border-radius: 8px;">
+            <h3 style="margin-bottom: 10px; font-size: 1rem;">🏫 School Logo (Optional)</h3>
+            <label for="schoolLogo">Upload School Logo:</label>
+            <input
+              type="file"
+              id="schoolLogo"
+              accept="image/png,image/jpeg,image/jpg"
+              class="text-input"
+              style="padding: 10px; margin-bottom: 10px;"
+              onchange="handleLogoUpload(event)"
+            />
+            <small style="color: #6b7280; display: block; margin-bottom: 10px;">Logo will be automatically resized and rounded. Max 2MB.</small>
+            
+            <div id="logoPreview" style="display: none; margin-top: 10px;">
+              <img id="logoPreviewImg" style="max-width: 100px; max-height: 100px; border-radius: 50%; border: 2px solid #d1d5db;" />
+              
+              <div style="margin-top: 5px;">
+                <label for="logoSize">Logo Size:</label>
+                <input
+                  type="range"
+                  id="logoSize"
+                  min="50"
+                  max="200"
+                  value="100"
+                  style="width: 100%"
+                  oninput="updateLogoSize()"
+                />
+                <span id="logoSizeValue">100px</span>
+              </div>
+              
+              <div style="margin-top: 10px;">
+                <label for="logoPosition">Logo Position:</label>
+                <select id="logoPosition" class="text-input" style="padding: 5px;" onchange="updateLogoPreview()">
+                  <option value="custom">Custom (Use Sliders Below)</option>
+                  <option value="top-left">Top Left</option>
+                  <option value="top-center">Top Center</option>
+                  <option value="top-right">Top Right</option>
+                  <option value="bottom-left">Bottom Left</option>
+                  <option value="bottom-center">Bottom Center</option>
+                  <option value="bottom-right">Bottom Right</option>
+                </select>
+              </div>
+              
+              <div style="margin-top: 10px; padding: 10px; background: white; border-radius: 5px;">
+                <h4 style="margin-bottom: 10px; font-size: 0.9rem;">Fine-tune Position:</h4>
+                
+                <label for="logoHorizontal">Horizontal Position:</label>
+                <input
+                  type="range"
+                  id="logoHorizontal"
+                  min="0"
+                  max="100"
+                  value="2"
+                  step="0.5"
+                  style="width: 100%"
+                  oninput="updateLogoCustomPosition()"
+                />
+                <span id="logoHorizontalValue">2%</span>
+                
+                <label for="logoVertical" style="margin-top: 10px; display: block;">Vertical Position:</label>
+                <input
+                  type="range"
+                  id="logoVertical"
+                  min="0"
+                  max="100"
+                  value="2"
+                  step="0.5"
+                  style="width: 100%"
+                  oninput="updateLogoCustomPosition()"
+                />
+                <span id="logoVerticalValue">2%</span>
+              </div>
+              
+              <button class="button" style="background: #ef4444; color: white; margin-top: 10px;" onclick="removeLogo()">
+                ❌ Remove Logo
+              </button>
+            </div>
+          </div>
+
+          <div class="input-group" style="margin-bottom: 1rem; padding: 15px; background: #f3f4f6; border-radius: 8px;">
+            <h3 style="margin-bottom: 10px; font-size: 1rem">
+              📍 Adjust Text Positions
+            </h3>
+
+            <label for="textTopPosition">Certificate Text Position (Top %):</label>
+            <input
+              type="range"
+              id="textTopPosition"
+              min="20"
+              max="60"
+              value="52"
+              style="width: 100%"
+              oninput="updateTextPosition()"
+            />
+            <span id="textTopValue">52%</span>
+
+            <label for="nameTopPosition" style="margin-top: 10px; display: block">Name Position (Top %):</label>
+            <input
+              type="range"
+              id="nameTopPosition"
+              min="35"
+              max="65"
+              value="51"
+              style="width: 100%"
+              oninput="updateTextPosition()"
+            />
+            <span id="nameTopValue">51%</span>
+
+            <label for="dateTopPosition" style="margin-top: 10px; display: block">Date Position (Bottom %):</label>
+            <input
+              type="range"
+              id="dateTopPosition"
+              min="20"
+              max="80"
+              value="50"
+              style="width: 100%"
+              oninput="updateTextPosition()"
+            />
+            <span id="dateTopValue">50%</span>
+          </div>
+             <div class="input-group" style="margin-bottom: 1rem">
             <label for="certificateText">Certificate Text:</label>
             <textarea
               type="text"
@@ -56,26 +193,22 @@
               style="padding: 10px"
             />
           </div>
+
           <textarea
             id="nameInput"
             placeholder="Jia Mari Chung&#10;John Smith&#10;Sarah Johnson&#10;Michael Chen"
           ></textarea>
-          <button
-            class="button button-primary"
-            onclick="generateCertificates()"
-          >
+          
+          <button class="button button-primary" onclick="generateCertificates()">
             🎓 Generate Certificates
           </button>
-          <div
-            id="successMessage"
-            style="display: none"
-            class="alert alert-success"
-          >
-            <strong>✓ Certificates ready!</strong> Use the preview to check
-            them.
+          
+          <div id="successMessage" style="display: none" class="alert alert-success">
+            <strong>✓ Certificates ready!</strong> Use the preview to check them.
           </div>
         </div>
-        <div class="card"style="background: #cce1fb;">
+
+        <div class="card" style="background: #cce1fb">
           <h2 class="f">👁️ Preview & Print</h2>
           <div id="previewSection">
             <div class="empty-state">
@@ -96,7 +229,7 @@
       </div>
     </div>
 
-    <div id="printArea">></div>
+    <div id="printArea"></div>
 
     <script src="./scripts/script.js"></script>
   </body>
