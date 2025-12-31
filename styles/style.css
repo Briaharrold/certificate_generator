@@ -12,6 +12,7 @@ body {
     background: #9dcbff;
     padding: 20px;
     min-height: 100vh;
+    user-select: none;
 }
 
 .certificate-text-overlay {
@@ -24,6 +25,16 @@ body {
     text-align: center;
     width: 60%;
     padding: 0 20px;
+    transition: opacity 0.2s;
+}
+
+.certificate-text-overlay:hover,
+.certificate-name-overlay:hover,
+.certificate-date-overlay:hover,
+.draggable-logo:hover {
+    opacity: 0.8;
+    outline: 2px dashed #2563eb;
+    outline-offset: 4px;
 }
 
 .f {
@@ -38,6 +49,7 @@ body {
     font-size: 20px;
     color: #111b9d;
     font-family: "Roboto", sans-serif;
+    transition: opacity 0.2s;
 }
 
 .bg {
@@ -224,7 +236,6 @@ textarea:focus {
     transform: scale(0.50);
     transform-origin: top left;
     width: 500px;
-    
 }
 
 .button-group {
@@ -283,6 +294,7 @@ textarea:focus {
     font-family: 'Poppins', sans-serif;
     line-height: 1.1;
     letter-spacing: 4px;
+    transition: opacity 0.2s;
 }
 
 .logo {
@@ -295,6 +307,59 @@ textarea:focus {
 
 .name-blue {
     color: #0c0e93;
+}
+
+/* Draggable element styles */
+.draggable-element,
+.draggable-logo {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.draggable-element:active,
+.draggable-logo:active {
+    cursor: grabbing !important;
+}
+
+/* Resize handles */
+.resize-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #2563eb;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: ew-resize;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.resize-handle-left {
+    left: -10px;
+}
+
+.resize-handle-right {
+    right: -10px;
+}
+
+.resizable-element:hover .resize-handle {
+    opacity: 1;
+}
+
+.resize-handle:hover {
+    background: #1d4ed8;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.resize-handle:active {
+    background: #1e40af;
+    cursor: ew-resize;
 }
 
 /* Print styles */
@@ -360,6 +425,20 @@ textarea:focus {
     
     .certificate-date-overlay {
         transform: translateX(-50%) !important;
+    }
+    
+    /* Remove hover effects in print */
+    .certificate-text-overlay:hover,
+    .certificate-name-overlay:hover,
+    .certificate-date-overlay:hover,
+    .draggable-logo:hover {
+        opacity: 1;
+        outline: none;
+    }
+    
+    /* Hide resize handles in print */
+    .resize-handle {
+        display: none !important;
     }
 }
 
